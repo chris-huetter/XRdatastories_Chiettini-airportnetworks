@@ -4,11 +4,11 @@ Guidance for AI coding agents (and humans) working on this repository.
 
 ## What this is
 
-An installable web app that teaches network science in sixteen narrated stories
+An installable web app that teaches network science in seventeen narrated stories
 (the airports about four minutes, the proteins and the cell map about six, the tour about ten and a half, the muscle
 story about nine, the endotype story about seven and a half, the PET story about six, the microanatomy story about eight,
 the ovary story about eight, the qubits story about nine, the mutation story about eight and a half, the tissue topology
-story about nine, the soil story about eleven, the pass story about seven, the flock and the robot gang about two), each
+story about nine, the soil story about eleven, the CDK5 story about eight, the pass story about seven, the flock and the robot gang about two), each
 followed by an explore mode. Everything works on desktop, phones and in VR/AR headsets (built for Meta
 Quest Browser, WebXR).
 
@@ -27,6 +27,7 @@ Quest Browser, WebXR).
 | Quantum phylogenetics | `stories/mutation.js` | a text in four letters copied with swaps; a family tree in 3D (8 tips, 14 branches, every swap simulated) you walk round and look up into; a letter's two qubits and their read-outs; a rule of change (three example substitution models) as balls and arrows and a path through the pyramid of mixes; the machine for one branch (copy and turn), its circuit, one machine per branch; an RNA stem, its pairs and their coupling; the ancestor of three species rebuilt 2,000 times three ways (Enes Berk Sakalli and Arndt von Haeseler's poster; example numbers computed live, the poster's only as the authors' test) |
 | Tissue topology | `stories/topo.js` | 110 real cells of a healthy liver (the poster's patch) with balls growing round them, the network with triangles, pieces joining and loops opening and closing, and the tower of scales; 123 GTEx liver slides (66 healthy, 57 with cirrhosis, 30.8 million cells found by HistoPLUS), their curves, main shapes, scores, a classifier's wall, its held-out test and its weight for every radius; a new slide's window of 6,716 cells, every cell scored, the two groups and their cell types (Simon Schindler, André Rendeiro and Jörg Menche's poster; every number computed by their package topocyte on their data) |
 | Soil microbes | `stories/soil.js` | a cut-away block of soil with a wheat plant, its nitrogen's flows and the microbes' relay; a field trial in Japan (a BNI wheat and its control, three fertiliser regimes, 24 plots, five dates, 119 samples) with each plot's chlorophyll and nitrate and the jars' N2O read off the slides; about 100,000 kinds of soil microbe (a cloud of 20,000) and the co-occurrence network of 1,564 kinds and 22,348 links, its modules and the two wheat lines' networks side by side (the slides and field trial of Marina Montserrat Díez, Christa Schleper and colleagues; the network built for this story) |
+| Brain kinase | `stories/cdk5.js` | the human interactome (16,376 proteins, 309,355 interactions) in the six arrangements of the Menche lab's CDK5 VR project: a sphere of GO biological processes (its knots of shared processes named from today's GO), CDK5 with its activators p35 and p39, Reactome's Signalling by NTRK2, calpain making CDK5 hyperactive, Reactome's pathway of deregulated CDK5 in Alzheimer's disease models, and the landscape of Disease Ontology associations the sphere opens into; explore by protein, pathway and disease term |
 | Networks for everyone (outreach; English and German) | `stories/pass.js` | a school of fish (300, a live simulation) all around you, each watching its 7 nearest neighbours; the airports story's globe (3,214 airports, 18,858 routes, taken unchanged) with a seeded S/E/I/R outbreak on its routes; the cell map story's cell (249 proteins in 13 places, taken unchanged), its NF-κB relay and CFTR in the wrong place |
 | Flock | `stories/flock.js` | 200 starlings (a live simulation) flying all around you at dusk, each following its seven nearest neighbours |
 | Robot gang | `stories/robots.js` | 6 to 24 robot vacuums (a live simulation) in a model living room, or in a headset your own room; who follows whom (you, or the one ahead) is the network |
@@ -83,7 +84,7 @@ the folder to any HTTPS host (GitHub Pages works); VR and installing need HTTPS.
   the answer when the network takes more than 4 s). The narration MP3s are
   served from the cache (with byte ranges), a cache of their own that outlives
   the releases (`networks-narration`, v109): a narration goes in when a story
-  first plays it on this device, never all sixteen at once (about 57 MB; ten
+  first plays it on this device, never all seventeen at once (about 57 MB; ten
   headsets at their first visit would pull 570 MB over one router while people
   are already in a room), so offline a device has the narrations it has
   played. A new worker asks the server only about those it holds, with their
@@ -220,6 +221,10 @@ the folder to any HTTPS host (GitHub Pages works); VR and installing need HTTPS.
   readings reconciled, the data it writes, its decoders and their test, the story's palette, three sets, engine parts
   adapted from the tissue topology story's, build script, set harness; it uses `tools/lbi/kit.js`, the tour's `web` set
   and the tissue topology story's look); see its `README.md` and `SPEC.md`.
+- `tools/cdk5/` - the sources of `stories/cdk5.js` (the data generator, which reads a clone of the Menche lab's public
+  CDK5_data repository and, for the process knots, a current GO release; the data it writes, its decoders and their test;
+  the story's palette; two sets, `net` and `core`; engine parts adapted from the soil story's; build script, set harness;
+  it uses `tools/lbi/kit.js` and the tissue topology story's look); see its `README.md` and `SPEC.md`.
 - `tools/pass/` - the sources of `stories/pass.js` (the build that cuts the airports story's globe and the cell map
   story's cell out of `stories/airports.js` and `stories/spatial.js`, unchanged; three sets, `fish`, `globe` and `cell`;
   the story's words in two languages; engine parts adapted from the qubits and flock stories'; set checks, harness); see
@@ -273,7 +278,7 @@ the folder to any HTTPS host (GitHub Pages works); VR and installing need HTTPS.
   `push`).
 - `tools/lowpoly/` - the miniatures (`models-a.js`, `models-b.js`: each
   `LOWPOLY_MODELS['<story>.<set>'] = { story, set, name, shows, tris, build(THREE) }`,
-  under 1,200 triangles, `tris` exact; 48 props, the design room's own `design.table` and the studio's
+  under 1,200 triangles, `tris` exact; 50 props, the design room's own `design.table` and the studio's
   `studio.stage` (870 triangles: a low stage, a small figure, a see-through cube's edges, a speaker on a post),
   only their station icons, and, last, `all.stories` and `all.lobby`, the icons of the shell's two
   circles, All stories and Back to the lobby, not props either), their harnesses (`harness-a.html`,
@@ -375,8 +380,8 @@ the folder to any HTTPS host (GitHub Pages works); VR and installing need HTTPS.
   (`XR.stories`, built by `xrLandingSetup`). Entering VR/AR from inside a
   story resumes that story. In a shared room a headset never shows the
   Stories screen (see "Shared rooms"), except at an All stories circle.
-  - The headset Stories screen (v109; the same lines in all sixteen stories and the design room, on `XR.landGroup` in
-    `GL.rig`): a header (`XR.land[0]`, `drawLandHead`, 1.02 m wide) with only the title (*Networks, in sixteen
+  - The headset Stories screen (v109; the same lines in all seventeen stories and the design room, on `XR.landGroup` in
+    `GL.rig`): a header (`XR.land[0]`, `drawLandHead`, 1.02 m wide) with only the title (*Networks, in seventeen
     stories*), its hint (or where an anchored place stands, `HOST.anchor.status()`) and *Back to the story* (while
     `XR.inStory` and not at an All stories circle's cards); the sound, Sound check, Anchor, Exit, Recenter or Place
     again and Repeat are the headset's menu's, not on it. Under it one card per story (`XR.land[1..]`, in
@@ -384,7 +389,7 @@ the folder to any HTTPS host (GitHub Pages works); VR and installing need HTTPS.
     into the story, else `HOST.go(key)`) in two rows on one arc, as the All stories circle's icon has them: the first
     half of the list (rounded up) in the upper row, the rest under it, a shorter row centred, each card turned to you.
     In a row neighbours stand 0.381 m apart and the outer ones at most 62 degrees to the side, never nearer than
-    1.25 m (sixteen: eight a row, 0.306 rad apart at 1.25 m). Heights over your eyes (`XR_LAND`): the header's middle
+    1.25 m (sixteen were eight a row, 0.306 rad apart at 1.25 m; seventeen are nine and eight). Heights over your eyes (`XR_LAND`): the header's middle
     0.475 m, the rows' middles 0.13 m and -0.38 m (0.05 m apart, the upper row's top 0.03 m under the header), so it
     reaches from 0.56 m above your eyes to 0.61 m below, the header 1.22 m ahead.
 - The address mirrors the state (`HOST.setUrl`): `#stories` while the Stories
@@ -473,7 +478,7 @@ the folder to any HTTPS host (GitHub Pages works); VR and installing need HTTPS.
   after Place again, Anchor off or the end of the session is thrown away.
   What a session asks for comes from the shell (`HOST.xr.request(mode)`, in
   every story's `xrStart` since v119: `session = await (HOST.xr.request ? HOST.xr.request(mode) :
-  navigator.xr.requestSession(mode, { optionalFeatures: HOST.xr.features(mode) }));`, the same line in all sixteen,
+  navigator.xr.requestSession(mode, { optionalFeatures: HOST.xr.features(mode) }));`, the same line in all seventeen,
   the design room and the studio; `HOST.xr.features(mode)` is still the list): AR asks for `local-floor`, `hand-tracking`,
   `anchors`, `plane-detection` and `mesh-detection` (the robot gang's room and real-world occlusion) and
   `shared` (the shared space), and `depth-sensing` (real-world occlusion: below), all optional; VR only for `local-floor`,
@@ -2215,10 +2220,10 @@ gaining `k`, `ra` and `rb`). The plan is `docs/shared-space-plan.md`.
     station, story, hidden, panels, people, subs, list, words, quiet }`), `cameraOffered()`, `cameraStart(why)`.
   - Untested on a real phone: everything (the hit test on a tape cross and how close it lines up, a heavy story's frame
     rate on a phone, the DOM overlay on real Chrome, the recording with Android's screen recorder, sound in it).
-- Arrange all: two rows in front of you, half the stories (rounded up: eight of
-  sixteen) 1.2 m ahead and the rest 2.6 m further on (behind them; in the gaps when the second row is shorter), 2.4 m apart, every
+- Arrange all: two rows in front of you, half the stories (rounded up: nine of
+  seventeen) 1.2 m ahead and the rest 2.6 m further on (behind them; in the gaps when the second row is shorter), 2.4 m apart, every
   station facing away from you (its content floats 1.4 m beyond its spot); it
-  needs about 17 m x 4 m of floor from 1.2 m in front of you. It leaves the design room's table where it is (not a
+  needs about 19 m x 4 m of floor from 1.2 m in front of you. It leaves the design room's table where it is (not a
   story), and the All stories and lobby circles too (never moved, made or removed by it). Remove asks first ("Remove for everyone?", 3 s), on the page and in the headset.
 - Station icons (`makeIcon`, `iconDef`, `miniDef`, placed by `iconStep` in `shared.js`; 29 October 2026, the owner's
   go; made from the miniatures the same day, the design room's part 2): over each station's ring, its middle 2.1 m
@@ -3143,7 +3148,7 @@ gaining `k`, `ra` and `rb`). The plan is `docs/shared-space-plan.md`.
   A page following a station (Follow) leaves its Stories screen: while that
   shows, nothing syncs.
 
-The hooks every story keeps (all sixteen, the same lines; the flock is the
+The hooks every story keeps (all seventeen, the same lines; the flock is the
 reference, `tools/flock/engine/`):
 
 - `collab: { APP, scene: () => (LOAD.done ? GL.scene : null), state, apply, view, setView, effect, hover, panel, place }`
@@ -3163,7 +3168,7 @@ reference, `tools/flock/engine/`):
   normalised), which in a headset turns and sizes the scene in the room, or
   null (story mode, or while it flies somewhere); `setView(v, now)` glides there in
   0.25 s (`orbit.fast`), or with `now` (someone else turning it, smoothed by the shell) puts `orbit.cur` there at once
-  (its angle unwrapped as for the glide; `orbit.to` null), the same lines in all sixteen (the flock, the robots and
+  (its angle unwrapped as for the glide; `orbit.to` null), the same lines in all seventeen (the flock, the robots and
   the design room take the argument and set nothing). The flock and the robots are life size in a headset:
   their `view()` is always null. While a headset stands at its station the
   explore sway rests (`HOST.room.placing()`).
@@ -3195,7 +3200,7 @@ reference, `tools/flock/engine/`):
   `HOST.start` and `allPick`); the header's *Back to the story* and the pane's *Back* not drawn while `xrCards()`; and in
   `drawMain`, after the room's Stories line,
   `else if (xrAllHere() && !XR.stories) hb('stories', 'Stories', () => HOST.room.allBack(), 130);`. The smoke test checks
-  the lines are in all sixteen stories and every page in `STORY_EXTRA` (the design room, the studio).
+  the lines are in all seventeen stories and every page in `STORY_EXTRA` (the design room, the studio).
 - Recenter, next to `xrRecenter` (the story panel's Recenter button, and `recenter: xrRecenterAsk,` in the returned
   object after `caption`, for the menu's Recenter and Place again):
   `function xrRecenterAsk() { if (HOST.room && HOST.room.recenter && HOST.room.placing && HOST.room.placing()) return HOST.room.recenter(); if (HOST.anchor.on) HOST.anchor.again(); XR.needRecenter = true; return true; }`
@@ -3279,6 +3284,7 @@ What each story shares:
 | mutation | tab, scene, every scene's controls (letters: view, letter or mix; rule: view, rule, start and parent letters; tree: view, tree, how fast letters change, machines; stem: view, numbers (the authors' test or this example), method), the branch length (`time`, to the hundredth), the read-outs and their seed, the branch picked, the pair favour (`w`), the rebuild's seed (never the camera or how far the read-outs have played) | none |
 | topo | tab, scene, every scene's controls (the liver: lifted out, in the body or a slice; the slide: tissue, look, one scale; the tower: view, what is lit; the cohort: view, pieces or loops; the map: show, 50 or 100 µm), the patch's radius (`r`, µm to the hundredth), a cell's network radius (`mr`), the slide picked (`slide`, -1 none), the window of radii (`from`, `to`, on the 0.5 µm grid; `to` 100.5 is "and above"), the cell picked (`cell`, -1 the poster's cell v) | none |
 | soil | tab, scene, every scene's controls (the soil block: view, fertiliser, wheat, DCD; the field: view, date, measure, wheat line, regime; the microbes: view, colour, split by), the module picked (`mod`, -1 none), the threshold (`rho`, to the hundredth), the shuffle (`shuf`, 0 or 1), the kind picked (`kind`, a cloud index, -1 none), the group of plots picked (`plot`, line * 3 + regime, -1 none) | none |
+| cdk5 | tab, scene, every scene's switches (`ctl`: links, outer shell, process knots, cousins, the 30 nearest), the protein picked (`prot`, -1 none), the disease term picked (`term`, -1 none), the pathway lit (`path`, -1 none, 0 NTRK2, 1 Alzheimer's) (never the search text, the camera or standing inside) | none |
 | pass | tab, scene, every scene's controls but the fish's view (the fish: neighbours watched, links, shark now and then; the globe: view, colour, pillars, outbreak on; the cell: view, organelles, colour, move), the school's size, the outbreak's start (an airport's code) and settings (incubation, infectious days, spread, flights cut), the city looked up, the protein picked, the school's place at a station (`sea`, moved with the grip there) (never the language, the outbreak's day, the steered shark or the sea moved outside a room) | `shark` (a passing one, as the flock's falcon, in the set's frame), `school` (quiet, twice a second, as the flock's `flock`), `fishes` (quiet, three times a second from the leader: every fish, as the flock's `birds`), `steered` (quiet, about 15 times a second while someone is the shark: their own shark, see the pass story's notes) |
 | flock | birds, links, falcon | `falcon` (where it starts, its velocity and aim, in the set's frame; up to four in the air), `flock` (quiet, twice a second: where the flock is, see the flock's notes), `birds` (quiet, three times a second from the leader while anyone else is there: every bird, about 2.4 KB for 200) |
 | robots | rule, robots, trails, links | `crumbs` (a pile: in room coordinates in a headset with an aligned frame, else in the station's frame), `dust` |
@@ -3496,7 +3502,7 @@ contract between the lanes is `tools/trackers/SPEC.md`; setting it up, `tools/tr
   up's placement in practice (a few cm where the trackers' own offsets do not average out, which turns with the
   performer), takes made through a real relay.
 
-## Inside a story (all sixteen follow the same pattern)
+## Inside a story (all seventeen follow the same pattern)
 
 - Data at the top (airports and proteins: precomputed constants; spatial: the
   editable `PLACES`, `PROTEINS`, `LINKS`, `TOGETHER`, `MOVES` lists, laid out
@@ -3573,7 +3579,7 @@ contract between the lanes is `tools/trackers/SPEC.md`; setting it up, `tools/tr
   above the bottom sheet (`0.21 * h`), and `GL.fit` stands the scene back to
   fit. In focus mode (v106, the shell's `HOST.focus()`: the 3D alone on a phone
   or tablet) `resize()` reads `GL.bare = !!(HOST.focus && HOST.focus());`
-  first (the same line in all sixteen, the design room and the studio; the shell sends a
+  first (the same line in all seventeen, the design room and the studio; the shell sends a
   `resize` when it changes) and then frames the scene for the whole page: no
   sideways offset, its middle at 0.45 of the height
   (`setViewOffset(w, h, 0, 0.05 * h, w, h)`), and `GL.fit` for the page between
@@ -4015,6 +4021,43 @@ engine parts adapted from the tissue topology story's (with the hop from Vienna 
   `tools/soil/data/reconcile.py`.
 - **British spelling** (colour, fertiliser, centre, grey, neighbourhood), English only; plain words for a business
   audience, the technical layer in small print.
+
+## The CDK5 story (`stories/cdk5.js`) is built the same way
+
+`stories/cdk5.js` ("The switch that sticks", the kinase CDK5 and brain diseases; the owner, 18 November 2026: "take all
+data and scene descriptions and data representations from the github", and of its two VR projects the analytics one
+only, networks only) is generated from `tools/cdk5/` (`node tools/cdk5/build.mjs`, `--check` as for the tour): the tour's
+kit, `CDK5_DATA` (`sets/data.js`, generated), its decoders `CDATA` (`sets/cdata.js`, checked by
+`node tools/cdk5/test-data.mjs`), the story's palette `CLOOK` (`sets/look.js`), the tissue topology story's look
+(`TLOOK`, unchanged), two sets (`net`: 16,376 points flowing between the authors' six arrangements, each scene's links,
+CDK5's halo, its partners, its cousins, a pathway or a disease term lit, its 30 nearest in the landscape, the process
+knots, and a veil that clears the view to the map's centre; `core`: each scene's centre proteins as lit balls and tubes
+with names; each with a manifest) and engine parts adapted from the soil story's. `tools/cdk5/SPEC.md` is the contract.
+
+- The data: `python3 -I tools/cdk5/data/gen_data.py <folder of the CDK5_data clone> --go <folder with goa_human.gaf.gz
+  and go-basic.obo>` reads the repository's `CDK5_analytics` VR project, whose layouts, colours and links it decodes
+  exactly from the textures (`layouts/` and `layoutsl/` the high and low bytes of each coordinate; `layoutsRGB/` a node's
+  RGBA; `links/00-BIOPROC.bmp` each link as two pixels, a node's pixel in the 128-wide node textures, R + 128 G;
+  `linksRGB/` a link's RGBA), its interactome (`input/ppi_elist.txt`) and gene symbols, the two Reactome pathway exports
+  and its Disease Ontology tables (pickles of dicts, lists and strings only, read by an unpickler that refuses every
+  class). The clone stays out of the repository. The notebook's two feature pickles (GO processes and diseases by gene)
+  are on the lab's Drive, not in the repository: the layouts they gave are in the textures.
+- What is ours, said so: the close-ups at the centre (the authors' centre proteins at their relative places, scaled up to
+  radius `CDATA.CENTRE_R`), the tags, the over-representation of disease terms among CDK5's partners and its 30 nearest
+  proteins in the landscape (hypergeometric within the 6,538 proteins with a disease, Benjamini-Hochberg; "in this map"),
+  and the process knots on the map of processes (19 November 2026, the owner: "annotate the protein clouds in the very
+  first layout"): named from a current GO release, since the authors' GO matrix is not in their repository; today's GO
+  finds no single process in the map's big dense clouds, so 14 small knots where one process gathers (4 to 14 proteins, 5
+  to 81 times chance) are labelled instead, and the story says so. The authors' one drawn link, CDK5 - calpain (calpain
+  acts on p35, not on CDK5), is said so.
+- Eight chapters: Sixteen thousand proteins, A kinase among its cousins, Two partners switch it on, Healthy signalling, A
+  cut that sticks, Stuck on in Alzheimer's, A landscape of diseases, Too little, too much. Every number from `CDATA`
+  (`FACTS`). In a headset chapters 1 and 2 stand you inside the map (`XR.inW`, the map's middle at your eyes, 1.25 m a
+  unit), and from chapter 3 it floats in front of you at 0.5 m a unit, its scale capped so no point comes within 0.35 m
+  of the eyes (`XR_BOUND`).
+- Explore: Scenes (the six, with switches per scene, Stand inside), Proteins (search, partners, terms, pathways),
+  Diseases (88 terms, CDK5's own first) and About. Shared state `{ tab, scene, ctl, prot, term, path }`.
+- British spelling, English only. The open questions are C1 to C7 in `docs/questions-for-authors.md`.
 
 ## The pass story (`stories/pass.js`) is built the same way
 
@@ -5312,7 +5355,7 @@ sense for now"): every suite below that a change touches runs before `main` move
 `dev` gets only `node --check` on the changed files, the builds' `--check` and `node tools/release.mjs --check`, and a
 red result there is not chased. Each "after touching ..., run ..." below says what goes into that release run.
 
-The smoke test (serve the folder, then run it) loads every story (and the design room: its 48 miniatures built, a click putting one on the stage
+The smoke test (serve the folder, then run it) loads every story (and the design room: its 50 miniatures built, a click putting one on the stage
 with its card as `props.json` has it, a pretend headset's grip, its shared state, Tidy; and the studio, below), scrubs through it, plays it as a slideshow
 (a paused scrub near a stop holding, a stop exactly at a chapter's end and at the
 last one, the voice finishing the chapter there where a story has a recording,
@@ -5359,14 +5402,14 @@ kept across a reload, set by `#subs=on`, the caption the words of the line on
 show (several captions for a long line) changing with the clock, holding while
 paused, none in explore mode or on the Stories screen, still for a 10 degree
 turn of the head and following a 40 degree one with lag, the pass story's in
-German, the hook in all sixteen; panels per story: shown by default, the menu's
+German, the hook in all seventeen; panels per story: shown by default, the menu's
 Panels row going round (controls only, hidden, shown) with the story following,
 no row on the Stories screen (its panels staying), each value in story and
 explore mode (controls only: the foot bar alone, the text panel neither drawn
 nor pointable; hidden: neither, A or X doing nothing and the Story tab's copy of the foot bar playing), cards hidden still
 hiding both and labels hidden neither, each story its own (the qubits, the flock, the airports, the
 design room), kept per story across a reload, set by a link for the story it
-opens, the panels and cards lines in all sixteen and every page in `STORY_EXTRA`; the frame-rate read-out (v118: off by
+opens, the panels and cards lines in all seventeen and every page in `STORY_EXTRA`; the frame-rate read-out (v118: off by
 default with nothing drawn, on through the menu's Frame rate row, the story's frames drawn through `HOST.perf` from the
 pretend head giving a second's triangles, draw calls and code time, the read-out showing them with the frames a second and
 the frame times, 22 degrees down and 14 to the left 1 m away and staying so as the head turns, kept across a reload,
@@ -5407,7 +5450,7 @@ focus mode (v106: on by default on a pretend phone, 390 x 844 and 360 px wide, a
 `HOST.focus()` true, the panel hidden, the slim bars, the subtitle strip's text the shell's caption for the line on show
 and changing with the clock, none in explore mode or on the Stories screen, a chapter's title at its start, Text opening
 the panel and closing it with a resize each time, explore's drawer closed by default, then open and closed; `#focus=off`
-giving today's layout; a desktop page unchanged; and the framing lines in all sixteen stories and every page in
+giving today's layout; a desktop page unchanged; and the framing lines in all seventeen stories and every page in
 `STORY_EXTRA`),
 phones and tablets (v109: the top bar fitting at 320, 360, 390 and 430 px with a pretend AR and VR and Install, and on an
 iPad either way round, on the Stories screen, in a story with focus mode on and off and in explore mode, AR always in it;

@@ -1,4 +1,4 @@
-// Headless smoke test for the sixteen stories, the design room and the studio.
+// Headless smoke test for the seventeen stories, the design room and the studio.
 //   node tools/smoke.mjs [base-url] [--only <words>]     (default http://127.0.0.1:8123/)
 // Serve the folder first (npx http-server -p 8123 -c-1 .). Needs Playwright;
 // set PLAYWRIGHT_MODULE to its path if it is installed globally, and
@@ -28,14 +28,15 @@ const page = await browser.newPage({ viewport: { width: 1280, height: 760 } });
 const errors = [];
 page.on('pageerror', e => errors.push(e.stack || e.message));
 page.on('console', m => { if (m.type() === 'error' && !/404|Failed to load resource/.test(m.text())) errors.push(m.text()); });
-const step = async (name, fn) => { if (ONLY && !name.startsWith(ONLY)) return; const n = errors.length; await fn(); console.log((errors.length > n ? 'FAIL ' : 'ok   ') + name); };
+// (--only <story key> also runs that story's load, which its own steps need)
+const step = async (name, fn) => { if (ONLY && !name.startsWith(ONLY) && name !== 'load ' + ONLY) return; const n = errors.length; await fn(); console.log((errors.length > n ? 'FAIL ' : 'ok   ') + name); };
 const smokeStep = step;
 
 await page.goto(base + 'index.html');
 await page.waitForTimeout(4000);
-// the sixteen stories, and the pages that are not stories (stories/list.js's STORY_EXTRA: the design room, the studio),
+// the seventeen stories, and the pages that are not stories (stories/list.js's STORY_EXTRA: the design room, the studio),
 // which keep the same hook lines as every story: each check of those lines covers both
-const STORY_KEYS = ['airports', 'proteins', 'spatial', 'lbi', 'nmd', 'endo', 'pet', 'micro', 'ovary', 'qubits', 'mutation', 'topo', 'soil', 'pass', 'flock', 'robots'];
+const STORY_KEYS = ['airports', 'proteins', 'spatial', 'lbi', 'nmd', 'endo', 'pet', 'micro', 'ovary', 'qubits', 'mutation', 'topo', 'soil', 'cdk5', 'pass', 'flock', 'robots'];
 const EXTRA = await page.evaluate(() => (self.STORY_EXTRA || []).map(s => s.key));
 await step('start screen is the landing page', async () => {
   if (!await page.evaluate(() => HOST.picking)) errors.push('start screen not shown on load');
@@ -45,6 +46,7 @@ await step('start screen is the landing page', async () => {
 // story with a scene in its state with that scene applied as from the room (silent)
 const SFX_PICK = {
   airports: ['selectAirport(A("SYD"))', 'pick'],
+  cdk5: ['openScene("calpain")', 'whoosh'],   // (its scenes are the authors' arrangements, not sets)
   flock: ['setCtl("flock", "birds", ctlValue("flock", GL.sets.flock.controls[1]) === "400" ? "100" : "400")', 'flutter'],
 };
 // The headset Stories screen (run inside a story, XR.on, the Stories screen open and its panels drawn): its header only
@@ -932,6 +934,31 @@ for (const key of STORY_KEYS.filter(k => runs(k) || runs('load ' + k))) {
       }
     } finally { await lp.close(); }
   });
+  if (key === 'cdk5') await step('cdk5: its data, and its links open explore mode on what they say', async () => {
+    // (the numbers the story shows, against CDATA; then a page of its own per link: a link differing only in its hash
+    // would not load the story again)
+    const nums = await page.evaluate(() => HOST.cur.peek(`(() => { const C = CDATA; return [C.n, C.e, C.deg(C.cdk5), C.scene('ntrk2').links.reduce((a, l) => a + l.pairs.length / 2, 0), C.scene('disease').links.reduce((a, l) => a + l.pairs.length / 2, 0), C.clouds.length, typeof GL.sets.net.api === 'function', typeof GL.sets.core.api === 'function']; })()`));
+    if (JSON.stringify(nums) !== JSON.stringify([16376, 309355, 205, 83, 1283, 14, true, true])) errors.push('cdk5: its data or sets: ' + JSON.stringify(nums));
+    const lp = await browser.newPage({ viewport: { width: 1280, height: 760 } });
+    lp.on('pageerror', e => errors.push('cdk5 link: ' + (e.stack || e.message)));
+    lp.on('console', m => { if (m.type() === 'error' && !/404|Failed to load resource/.test(m.text())) errors.push('cdk5 link: ' + m.text()); });
+    const LINKS = [
+      ['scene=disease', "X.scene === 'disease'"],
+      ['scene=ntrk2&links=off', "X.scene === 'ntrk2' && JSON.stringify(HOST.cur.collab.state()).includes('\"links\":\"off\"')"],
+      ['tab=proteins&q=CDK5R1', "X.prot === CDATA.r1"],
+      ['tab=diseases&term=lissencephaly', "X.term >= 0 && CDATA.terms[X.term].name === 'lissencephaly'"],
+      ['path=alzheimer', "X.path === 1"],
+    ];
+    try {
+      for (const [h, ok] of LINKS) {
+        await lp.goto('about:blank');
+        await lp.goto(base + 'index.html#cdk5&explore&' + h);
+        await lp.waitForFunction(() => typeof HOST !== 'undefined' && HOST.curKey === 'cdk5' && HOST.cur && HOST.cur.peek('APP.mode') === 'explore', null, { timeout: 60000 });
+        const shown = await lp.evaluate(ok => HOST.cur.peek(ok), ok);
+        if (!shown) errors.push(`cdk5: the link #cdk5&explore&${h} does not show what it says (${await lp.evaluate(() => JSON.stringify(HOST.cur.collab.state()))})`);
+      }
+    } finally { await lp.close(); }
+  });
   if (key === 'pass') await step('pass: both languages and their switch, every explore tool, on the page and in the headset', () => page.evaluate(async () => {
     const sleep = ms => new Promise(r => setTimeout(r, ms)), peek = src => HOST.cur.peek(src), out = [];
     const panels = () => peek(`(() => { XR.on = true; for (const P of XR.panels) { P.last = ''; P.t = -1e9; panelTick(P, performance.now() + 1e6); } XR.on = false; return XR.main.regions.map(r => r.id); })()`);
@@ -1128,13 +1155,13 @@ if (runs('headset')) {
 // The design room (#design, not one of the stories: not on the Stories screen): every miniature built on the table, a
 // click putting one on the stage with its card as tools/design/props.json has it, the shared state (a miniature moved
 // by a pretend headset's grip, both grips sizing it, apply(state()) giving the same state back, Tidy), the headset panels
-await step('design: not on the Stories screen; #design opens the table and all 48 miniatures are built', async () => {
+await step('design: not on the Stories screen; #design opens the table and all 50 miniatures are built', async () => {
   if (await page.$('#picker [data-story="design"]')) errors.push('design: the design room has a card on the Stories screen');
-  if (await page.evaluate(() => HOST.list.some(s => s.key === 'design') || HOST.count() !== 'sixteen')) errors.push('design: the design room is in the list of stories');
+  if (await page.evaluate(() => HOST.list.some(s => s.key === 'design') || HOST.count() !== 'seventeen')) errors.push('design: the design room is in the list of stories');
   await page.evaluate(() => HOST.start('design'));
   await page.waitForFunction(() => HOST.curKey === 'design' && HOST.cur && HOST.cur.peek('typeof GL !== "undefined" && !!XR.panelGroup && GL.sets.table.built() === GL.sets.table.total()'), null, { timeout: 60000 });
   const n = await page.evaluate(() => [HOST.cur.peek('GL.sets.table.total()'), HOST.cur.peek('APP.mode'), location.hash, document.title]);
-  if (n[0] !== 48 || n[1] !== 'explore' || n[2] !== '#design' || !/design room/i.test(n[3])) errors.push('design: ' + JSON.stringify(n) + ' (not 48 miniatures in explore mode at #design)');
+  if (n[0] !== 50 || n[1] !== 'explore' || n[2] !== '#design' || !/design room/i.test(n[3])) errors.push('design: ' + JSON.stringify(n) + ' (not 50 miniatures in explore mode at #design)');
 });
 await step('design: a click on a miniature puts it on the stage, its card matching props.json', async () => {
   const fs = await import('fs');
@@ -1257,7 +1284,7 @@ if (runs('studio')) {
     await stp.goto(base + 'index.html#studio&scenes=tools/studio/test/scenes&scene=test&edit');
     await stp.waitForFunction(() => typeof HOST !== 'undefined' && HOST.curKey === 'studio' && HOST.cur && HOST.cur.collab.scene(), null, { timeout: 60000 });
     if (await stp.$('#picker [data-story="studio"]')) errors.push('studio: it has a card on the Stories screen');
-    if (await stp.evaluate(() => HOST.list.some(s => s.key === 'studio') || !HOST.meta('studio') || HOST.count() !== 'sixteen' || !(self.STORY_EXTRA || []).some(s => s.key === 'studio'))) errors.push('studio: it is in the list of stories, or not in STORY_EXTRA');
+    if (await stp.evaluate(() => HOST.list.some(s => s.key === 'studio') || !HOST.meta('studio') || HOST.count() !== 'seventeen' || !(self.STORY_EXTRA || []).some(s => s.key === 'studio'))) errors.push('studio: it is in the list of stories, or not in STORY_EXTRA');
     if (!await until('STUDIO.ready()', 120000)) { errors.push('studio: the test scene did not load: ' + JSON.stringify(await ss('STUDIO.state()')).slice(0, 600)); return; }
     const s = await ss('STUDIO.state()'), M = s.models, B = M['box.glb'], F = M['figure.fbx'];
     const bad = [];
@@ -8117,7 +8144,7 @@ if (!ONLY) {
     if (!(de === 'de' && d1.vis && await sx('(setLang("de", false), 0)') === 0 && d1.text && e1.text && d1.text !== e1.text)) bad.push(`the pass story: German ${JSON.stringify(d1.text)}, English ${JSON.stringify(e1.text)}`);
     await sx('setLang("de", false)'); await settle(2);
     if (!await inPanel(d1.text)) bad.push('the pass story\'s German caption is not its panel\'s words: ' + d1.text);
-    // a hand-written story too, and the hook in all sixteen
+    // a hand-written story too, and the hook in all seventeen
     await openXR('airports');
     const a1 = await at(140);
     if (!(a1.vis && await inPanel(a1.text))) bad.push('the airports at 140 s: no caption of its line: ' + JSON.stringify(a1));
@@ -8127,7 +8154,7 @@ if (!ONLY) {
     await sp.evaluate(() => HOST.xr.setSubs(false));
     if (bad.length) errors.push(...bad.map(b => 'subtitles: ' + b));
   });
-  // the All stories circle's hook lines (v104): the same in all sixteen stories and the design room (its cards as the
+  // the All stories circle's hook lines (v104): the same in all seventeen stories and the design room (its cards as the
   // Stories screen, a card picking for the circle, the story panel's Stories button back to its cards)
   await step('every story keeps the All stories hook lines', async () => {
     const lines = ['const xrCards = () => !!(HOST.room && HOST.room.cards && HOST.room.cards());', 'const xrAllHere = () => !!(HOST.room && HOST.room.allHere && HOST.room.allHere());',
@@ -8223,7 +8250,7 @@ if (!ONLY) {
     if (dl.join(' ') !== 'hidden,controls -,-') bad.push('#design&panels=hidden gave ' + dl.join(' '));
     await sp.evaluate(() => HOST.panels.set('design', 'shown'));
     if (await vis() !== want.shown) bad.push('the design room shown again: ' + await vis());
-    // the same lines in all sixteen stories and the design room
+    // the same lines in all seventeen stories and the design room
     const miss = await sp.evaluate(async keys => (await Promise.all(keys.map(async k => { const s = await (await fetch('stories/' + k + '.js')).text();
       return s.includes("const pm = xrPanels(), pv = !land && !away && XR.cm !== 'hidden';") && s.includes('HOST.panels.sig(XR_HERE)') &&
         s.includes("const xrCardMode = () => (HOST.xr && HOST.xr.cards ? HOST.xr.cards() : xrLabelMode());") && s.includes("XR.lm = xrLabelMode(); XR.cm = xrCardMode();") &&

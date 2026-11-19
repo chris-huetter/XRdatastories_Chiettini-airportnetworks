@@ -25,6 +25,7 @@ MP3 at the file named under each story; if your chapters start at other times, c
 | Tissue topology: The shape of tissue | `audio/narration-topo.mp3` | synthetic voice | 8:50 |
 | Networks for everyone: Pass it on | `audio/narration-pass.mp3` | synthetic voice | 6:46 |
 | Soil microbes: Holding on to nitrogen | `audio/narration-soil.mp3` | synthetic voice | 11:03 |
+| Brain kinase: The switch that sticks | `audio/narration-cdk5.mp3` | synthetic voice | 8:27 |
 | Network medicine: Proteins | `audio/narration-proteins.mp3` | synthetic voice | 5:48 |
 | Spatial interactome: Cell map | `audio/narration-spatial.mp3` | synthetic voice | 5:41 |
 | Collective motion: Flock | `audio/narration-flock.mp3` | synthetic voice | 1:36 |
@@ -1224,6 +1225,82 @@ File: `audio/narration-soil.mp3` (synthetic voice). Chapters: 0:00 Half the sack
 - **10:36** Marking atoms means isotope studies with nitrogen-15; reading which genes are switched on is called metatranscriptomics. One question is still open. The jars show far less nitrous oxide from the BNI wheat's soil, while the data's own nitrous oxide value shows no clear difference over the season, 0.81 against 0.98, with p = 0.58. How the two measurements relate is not known yet.
 - **10:41** After the slides by Marina Montserrat Díez, Tadashi Yoshihashi, Guntur Subbarao Ventaka, Eleftheria Bachtsevani, Dimitrios Karpouzas, Christina Hazard, Melina Kerou and Christa Schleper (University of Vienna; University of Thessaly; Université Lyon 1; JIRCAS, Japan). The BNI wheat: Subbarao et al., PNAS.
 - **10:43** The trial's data used with the authors' permission. The soil block, the relay, the chromosome and the field's layout are illustrative. Narration: a synthetic voice (Kokoro).
+
+## Brain kinase: The switch that sticks (`#cdk5`)
+
+File: `audio/narration-cdk5.mp3` (synthetic voice). Chapters: 0:00 Sixteen thousand proteins, 1:01 A kinase among its cousins, 2:09 Two partners switch it on, 3:10 Healthy signalling, 4:17 A cut that sticks, 5:18 Stuck on in Alzheimer's, 6:24 A landscape of diseases, 7:36 Too little, too much; it ends at 8:27.
+
+### 0:00 Sixteen thousand proteins
+
+- **0:01** The switch that sticks
+- **0:03** CDK5, its network and brain diseases
+- **0:07** A human cell runs on thousands of proteins.
+- **0:13** Here are 16,376 of them. Proteins with similar jobs sit close together, and lines join those known to bind.
+- **0:23** Where proteins share a job, they gather in knots: sugar import, synaptic vesicles and intermediate filaments.
+- **0:35** 13,003 with a known job, on the inner sphere
+- **0:39** 3,373 with none known, on the outer shell
+- **0:47** Somewhere among them is CDK5.
+- **0:56** After the Menche lab's CDK5_data repository by Christiane Hütter, and its CDK5_analytics VR scenes.
+
+### 1:01 A kinase among its cousins
+
+- **1:02** A kinase among its cousins
+- **1:04** CDK5 is a kinase: it switches other proteins on or off by adding phosphate to them.
+- **1:13** On the map it sits among its cousins, kinases that drive cell division or switch genes on.
+- **1:36** But CDK5 works in neurons, which no longer divide, and its partners are spread across the map.
+- **1:43** 205 partners
+- **1:46** 396th of 16,376 by partners
+
+### 2:09 Two partners switch it on
+
+- **2:10** Two partners switch it on
+- **2:12** Its cousins are switched on by cyclins. CDK5 is not.
+- **2:20** Two proteins found in neurons, p35 and p39, switch it on. On the map they live far apart.
+- **2:39** Here they come together at the centre.
+
+### 3:10 Healthy signalling
+
+- **3:11** Healthy signalling
+- **3:14** In a healthy neuron, the growth factor BDNF docks on its receptor, NTRK2.
+- **3:25** A chain of proteins passes the message on, and CDK5 with p35 is one link.
+- **3:43** The neuron grows, survives and connects.
+
+### 4:17 A cut that sticks
+
+- **4:17** A cut that sticks
+- **4:20** Under stress, calcium floods into a neuron and wakes calpain, an enzyme that cuts proteins.
+- **4:32** Calpain cuts p35 into a shorter piece, p25.
+- **4:44** Bound to p25, CDK5 stays switched on for too long, and in the wrong places: it is hyperactive.
+
+### 5:18 Stuck on in Alzheimer's
+
+- **5:19** Stuck on in Alzheimer's
+- **5:21** A switch stuck on does damage.
+- **5:25** In Alzheimer's disease models, hyperactive CDK5 sets off harmful paths at once:
+- **5:35** the cell cycle,
+- **5:39** the Golgi,
+- **5:42** the nuclear envelope,
+- **5:45** the defences against oxidative stress,
+- **5:49** and signals for the cell's death.
+- **6:02** Now the map is coloured by disease; grey proteins have none known.
+
+### 6:24 A landscape of diseases
+
+- **6:25** A landscape of diseases
+- **6:28** Now place every protein by the diseases it is linked to.
+- **6:44** Proteins with a known disease gather in the middle; the rest are pushed to the walls.
+- **7:00** CDK5 lands among proteins tied to the same rare brain disorders: lissencephaly, a smooth brain, and pontocerebellar hypoplasia.
+- **7:22** Its partners lean towards the brain too: more of them than chance would give are linked to Parkinson's disease and psychotic disorders.
+
+### 7:36 Too little, too much
+
+- **7:36** Too little, too much
+- **7:39** CDK5 shows why a network view helps.
+- **7:44** Too little CDK5, and the brain does not build itself properly.
+- **7:52** Too much, stuck on by calpain's cut, and neurons are damaged.
+- **8:02** Explore the map yourself: any protein, any pathway, any disease.
+- **8:07** After the Menche lab's CDK5_data repository (github.com/menchelab/CDK5_data) by Christiane Hütter, and its CDK5_analytics VR project, made with cartoGRAPHs; the interactome, Reactome's pathways, the Gene Ontology and the Disease Ontology as the authors used them. The knots are named from today's Gene Ontology (release 2026-07-26), not the authors' own annotation; most of the map's big clouds mix many processes.
+- **8:08** Ours: the close-ups at the map's centre (their balls, tubes and names, a clearer drawing of the centre's proteins at the authors' places, scaled up), the tags with numbers and the over-representation counts. Narration: a synthetic voice.
 
 ## Network medicine: Proteins (`#proteins`)
 

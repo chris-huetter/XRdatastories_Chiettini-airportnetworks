@@ -38,3 +38,4 @@ tools/studio/test/local
 
 # Python bytecode (tools/trackers/bridge.py, the data generators)
 __pycache__/
+tools/cdk5/shots/

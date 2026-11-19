@@ -1,4 +1,4 @@
-Networks, in sixteen stories - installable web app
+Networks, in seventeen stories - installable web app
   1. Network theory, told with the world's airports  (stories/airports.js)
   2. A glimpse into the future of network medicine: a 3D tour of the Ludwig
      Boltzmann Institute for Network Medicine  (stories/lbi.js)
@@ -780,7 +780,7 @@ it). Without a room setup they get a virtual room round you, and the panel
 offers Set up your room. Point at the floor and pull the trigger to spill
 crumbs. Speeds and cleaning times are tuned to look right, not measured.
 
-Files: index.html (the app), stories/ (the sixteen stories, the design room and the studio, and list.js: the list of them),
+Files: index.html (the app), stories/ (the seventeen stories, the design room and the studio, and list.js: the list of them),
 version.json (the latest release: running copies pick up new and changed stories from it, written by
 tools/release.mjs), proteins.html and
 spatial.html (forward to the app), manifest.webmanifest, sw.js (offline cache), audio/,

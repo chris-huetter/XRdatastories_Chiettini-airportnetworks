@@ -1,7 +1,7 @@
 # airportnetworks
 
-**Networks, in sixteen stories**: an installable web app that teaches network
-science through sixteen short, animated stories. Each story takes a few minutes
+**Networks, in seventeen stories**: an installable web app that teaches network
+science through seventeen short, animated stories. Each story takes a few minutes
 (the tour about ten and a half) and ends in an explore mode where the network is yours
 to play with.
 It runs in any modern browser, on phones, and in VR and AR headsets (built for
@@ -362,6 +362,12 @@ from its words until it is narrated: `node tools/pace.mjs <url> --write <key>`.
   the chromosome and the field's layout are illustrative, and the story says so. Kinds of microbe are numbered, never
   named by their ids; none of the slides' pictures is shown. The wheat line after Subbarao et al., PNAS.
 
+- **The switch that sticks** (`stories/cdk5.js`), the kinase CDK5 and brain diseases, from the Menche lab's public
+  repository CDK5_data (github.com/menchelab/CDK5_data, Christiane Hütter): its CDK5_analytics VR project, six scenes on
+  the human interactome (16,376 proteins) made with cartoGRAPHs. Every layout, colour and link is the authors', decoded
+  from their textures by `tools/cdk5/data/gen_data.py` (the clone is not in this repository); the close-ups at the
+  centre, the tags and the counts of disease terms among CDK5's partners and neighbours are ours, and the story says so.
+
 - **Pass it on** (`stories/pass.js`), an outreach story of the Ludwig Boltzmann Institute for Network Medicine
   (LBI-NetMed), in English and German. Its globe is the airports story's (OpenFlights.org routes, 2014 snapshot, Open
   Database License; Natural Earth coastlines) and its cell the cell map story's (Human Protein Atlas and UniProt
@@ -397,7 +403,7 @@ The protein data is meant for teaching, not research.
 | Path | What it is |
 | --- | --- |
 | `index.html` | the app: Stories screen, shared page layout, loads and swaps the stories |
-| `stories/airports.js`, `stories/proteins.js`, `stories/spatial.js`, `stories/lbi.js`, `stories/nmd.js`, `stories/endo.js`, `stories/pet.js`, `stories/micro.js`, `stories/ovary.js`, `stories/qubits.js`, `stories/mutation.js`, `stories/topo.js`, `stories/soil.js`, `stories/pass.js`, `stories/flock.js`, `stories/robots.js` | the sixteen stories, with their data, explore modes and headset panels |
+| `stories/airports.js`, `stories/proteins.js`, `stories/spatial.js`, `stories/lbi.js`, `stories/nmd.js`, `stories/endo.js`, `stories/pet.js`, `stories/micro.js`, `stories/ovary.js`, `stories/qubits.js`, `stories/mutation.js`, `stories/topo.js`, `stories/soil.js`, `stories/cdk5.js`, `stories/pass.js`, `stories/flock.js`, `stories/robots.js` | the seventeen stories, with their data, explore modes and headset panels |
 | `stories/design.js`, `stories/studio.js` | two pages that are not stories (on no Stories screen): the design room (`#design`, a table with a small model of every prop) and the studio (`#studio`, your own models, trigger cubes and sounds placed in the room, served and saved by the relay's `--scenes`, with an upload page at `<relay>/upload`; see `tools/studio/README.md`) |
 | `stories/list.js` | the list of stories (their cards), read at the start and again while the app runs |
 | `version.json` | the latest release, written by `node tools/release.mjs`: running copies take new and changed stories from it, and ask before a new shell (see `AGENTS.md`, "Hot reload and live updates") |
@@ -432,6 +438,7 @@ The protein data is meant for teaching, not research.
 | `tools/mutation/` | sources of the mutation story (`node tools/mutation/build.mjs` writes `stories/mutation.js`; `node tools/mutation/test-mmath.mjs` checks its maths) |
 | `tools/topo/` | sources of the tissue topology story (`node tools/topo/build.mjs` writes `stories/topo.js`; `node tools/topo/test-data.mjs` checks its data against the poster's numbers; data from `tools/topo/data/gen_data.py` and the authors' files, which are not in the repository) |
 | `tools/soil/` | sources of the soil story (`node tools/soil/build.mjs` writes `stories/soil.js`; `node tools/soil/test-data.mjs` checks its data, decoders and key numbers; data from `tools/soil/data/gen_data.py` and the authors' files, which are not in the repository) |
+| `tools/cdk5/` | sources of the CDK5 story (`node tools/cdk5/build.mjs` writes `stories/cdk5.js`; `node tools/cdk5/test-data.mjs` checks its data and decoders; data from `tools/cdk5/data/gen_data.py` and a clone of the Menche lab's public CDK5_data repository, which is not in this one) |
 | `tools/pass/` | sources of the pass story (`node tools/pass/build.mjs` writes `stories/pass.js`, cutting its globe and cell out of `stories/airports.js` and `stories/spatial.js`; `node tools/pass/test-sets.mjs` checks its sets) |
 | `tools/flock/` | sources of the flock (`node tools/flock/build.mjs` writes `stories/flock.js`) |
 | `tools/robots/` | sources of the robot gang (`node tools/robots/build.mjs` writes `stories/robots.js`) |
@@ -461,7 +468,7 @@ The muscle story (`stories/nmd.js`) is generated the same way from `tools/nmd/`
 `tools/endo/`, the PET story (`stories/pet.js`) from `tools/pet/`, the
 microanatomy story (`stories/micro.js`) from `tools/micro/`, the aging ovary story (`stories/ovary.js`) from
 `tools/ovary/`, the qubits story (`stories/qubits.js`) from
-`tools/qubits/`, the mutation story (`stories/mutation.js`) from `tools/mutation/`, the tissue topology story (`stories/topo.js`) from `tools/topo/`, the soil story (`stories/soil.js`) from `tools/soil/`, the pass story (`stories/pass.js`) from `tools/pass/` (with the airports' globe and the cell map's
+`tools/qubits/`, the mutation story (`stories/mutation.js`) from `tools/mutation/`, the tissue topology story (`stories/topo.js`) from `tools/topo/`, the soil story (`stories/soil.js`) from `tools/soil/`, the CDK5 story (`stories/cdk5.js`) from `tools/cdk5/`, the pass story (`stories/pass.js`) from `tools/pass/` (with the airports' globe and the cell map's
 cell taken from their stories at build time), the flock
 (`stories/flock.js`) from `tools/flock/` and the robot gang
 (`stories/robots.js`) from `tools/robots/`, each with `node tools/<key>/build.mjs`
