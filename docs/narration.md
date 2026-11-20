@@ -26,6 +26,7 @@ MP3 at the file named under each story; if your chapters start at other times, c
 | Networks for everyone: Pass it on | `audio/narration-pass.mp3` | synthetic voice | 6:46 |
 | Soil microbes: Holding on to nitrogen | `audio/narration-soil.mp3` | synthetic voice | 11:03 |
 | Brain kinase: The switch that sticks | `audio/narration-cdk5.mp3` | synthetic voice | 8:27 |
+| Internet culture: Where memes meet | `audio/narration-memes.mp3` | synthetic voice | 8:38 |
 | Network medicine: Proteins | `audio/narration-proteins.mp3` | synthetic voice | 5:48 |
 | Spatial interactome: Cell map | `audio/narration-spatial.mp3` | synthetic voice | 5:41 |
 | Collective motion: Flock | `audio/narration-flock.mp3` | synthetic voice | 1:36 |
@@ -1301,6 +1302,65 @@ File: `audio/narration-cdk5.mp3` (synthetic voice). Chapters: 0:00 Sixteen thous
 - **8:02** Explore the map yourself: any protein, any pathway, any disease.
 - **8:07** After the Menche lab's CDK5_data repository (github.com/menchelab/CDK5_data) by Christiane Hütter, and its CDK5_analytics VR project, made with cartoGRAPHs; the interactome, Reactome's pathways, the Gene Ontology and the Disease Ontology as the authors used them. The knots are named from today's Gene Ontology (release 2026-07-26), not the authors' own annotation; most of the map's big clouds mix many processes.
 - **8:08** Ours: the close-ups at the map's centre (their balls, tubes and names, a clearer drawing of the centre's proteins at the authors' places, scaled up), the tags with numbers and the over-representation counts. Narration: a synthetic voice.
+
+## Internet culture: Where memes meet (`#memes`)
+
+File: `audio/narration-memes.mp3` (synthetic voice). Chapters: 0:00 Every meme on file, 0:56 Tied by tags, 2:04 Neighbourhoods, 3:22 A year in memes, 4:41 Niches on the outside, 6:00 The commons inside, 7:30 A hypothesis; it ends at 8:38.
+
+### 0:00 Every meme on file
+
+- **0:01** Where memes meet
+- **0:03** Internet memes and the tags that tie them
+- **0:06** Know Your Meme documents internet memes: here are 29,610 of them, from 1990 to 2022, each with its tags.
+- **0:17** Placed by the tags they share, memes that share tags sit together.
+- **0:32** Some share too few to be tied to any: 11,906 of them.
+- **0:49** After the Menche lab's Memes_Data repository by Christiane Hütter.
+
+### 0:56 Tied by tags
+
+- **0:57** Tied by tags
+- **0:59** Tie two memes when they share tags, more strongly the more they share.
+- **1:11** Now each meme moves to where its ties pull it.
+- **1:31** 17,243 memes form one network, with 387,453 ties.
+
+### 2:04 Neighbourhoods
+
+- **2:04** Neighbourhoods
+- **2:07** Groups that tie mostly among themselves stand out.
+- **2:15** Music, the big platforms, image macros, 4chan, politics, anime, films, games and streamers.
+- **2:44** Each has its own corner of the network, its own jokes and its own tags.
+
+### 3:22 A year in memes
+
+- **3:23** A year in memes
+- **3:25** Take one year at a time.
+- **3:32** In 2019, the hot topic was television and streaming.
+- **3:53** In 2020, it was politics, with the election and Trump.
+- **4:16** And on social media, TikTok, with 193 memes.
+
+### 4:41 Niches on the outside
+
+- **4:42** Niches on the outside
+- **4:44** Back to the whole network. From outside, the cloud is a wall of niches.
+- **4:56** Memes out here are tied tightly to their own: a median of 36 ties each, and only 2 % of them reach another group.
+
+### 6:00 The commons inside
+
+- **6:01** The commons inside
+- **6:03** Step inside, and it changes.
+- **6:11** At the centre sit the classics: Doge, Zerg Rush and The Most Interesting Man in the World.
+- **6:24** They have fewer ties, but a third of them reach other groups.
+- **6:42** From here, their ties run out to every wall.
+
+### 7:30 A hypothesis
+
+- **7:31** A hypothesis
+- **7:33** Here is what standing in the middle suggests.
+- **7:38** A meme does not reach everyone by being seen most.
+- **7:46** How central a meme is follows how far it crosses between groups, not its views or its year.
+- **8:03** Crossing may be what turns a niche joke into a shared classic.
+- **8:10** A test: in a later archive, today's crossing memes should outlast the niche ones.
+- **8:27** After the Menche lab's Memes_Data repository (github.com/menchelab/Memes_Data) by Christiane Hütter, and Know Your Meme. Ours: the communities (Louvain on the weighted ties) and their names, the measures behind the hypothesis, the tags with numbers, and the snapshots' lift into 3D (their hot topics rise). Narration: a synthetic voice.
 
 ## Network medicine: Proteins (`#proteins`)
 

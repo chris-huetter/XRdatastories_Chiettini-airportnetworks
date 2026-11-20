@@ -230,7 +230,7 @@ is GitHub Pages' custom domain for `main`.
 4. **Bump `VERSION` in `sw.js`** (`networks-v135` on `dev` and on `main` now, so `networks-v136` next) after any change to a file the app
    serves: `index.html`, `sfx.js`, `occlusion.js`, `ships.js`, `shared.js`, `sw.js`, `manifest.webmanifest`, `three.min.js`, `three.LICENSE.txt`,
    `proteins.html`, `spatial.html`, `README.txt`, `lowpoly.js`, and anything in `stories/`, `audio/` or `icons/`. For a new file the
-   app needs, add it to `SHELL` in `sw.js`. A narration goes in `AUDIO`, which already lists all seventeen stories' file names. If
+   app needs, add it to `SHELL` in `sw.js`. A narration goes in `AUDIO`, which already lists all eighteen stories' file names. If
    the new file is not directly inside `stories/`, `audio/` or `icons/`, also add it to `APP_FILES` in
    `relay/server.mjs`. A new story goes in `stories/list.js` (its card), and `stories/<key>.js` in `SHELL`.
 5. **Bump `FORMAT` in `shared.js`** (`networks-40` on `dev` and `main` now) when the shared keys, or the shape of a story's

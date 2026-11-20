@@ -1,23 +1,24 @@
 {
-  "version": "networks-v136",
-  "date": "19 November 2026",
+  "version": "networks-v137",
+  "date": "20 November 2026",
   "new": [
-    "A seventeenth story: The switch that sticks, on the kinase CDK5 and brain diseases, from the Menche lab's CDK5_data repository. 16,376 human proteins flow through the authors' six arrangements: a sphere of processes, CDK5 with its activators, NTRK2 signalling, calpain's cut, the Alzheimer's pathway, and a landscape of diseases.",
-    "Its first arrangement labels small knots where one process gathers (sugar import, synaptic vesicles, keratin filaments...), named from today's Gene Ontology.",
-    "Explore it by protein (search any gene symbol), by pathway and by disease term (88, CDK5's own first).",
-    "In a headset the first two chapters stand you inside the map of proteins; from chapter 3 it floats in front of you.",
-    "Its circle's icon is a sphere of glowing proteins with CDK5 in green."
+    "An eighteenth story: Where memes meet. 29,610 internet memes from Know Your Meme, from the Menche lab's Memes_Data repository, flow from the archive into a network of 17,243 memes tied by the tags they share, with 27 communities in colour.",
+    "A year in memes: the 2019 and 2020 networks with their hot topics rising (television and streaming; politics and Trump; TikTok).",
+    "Niches on the outside, a commons of classics inside (Doge, Grumpy Cat, Nyan Cat), and a closing hypothesis you meet standing in the middle: crossing between groups, not views, brings a meme to the commons.",
+    "In a headset chapters 6 and 7 stand you inside the cloud of memes.",
+    "No meme pictures; memes flagged by their own tags or a crude name stay unnamed points.",
+    "Everything from v136 too: the CDK5 story, The switch that sticks."
   ],
   "test": [
-    "Play The switch that sticks in a headset: chapters 1 and 2 put you inside the sphere of proteins. Does it feel comfortable, and can you find CDK5 in green?",
-    "From chapter 3: can you read the names at the centre through the sphere (the veil should clear the near side)?",
-    "Explore, Scenes, Map of processes, Stand inside: anything too close to your eyes? Point at a protein: does it pick?",
-    "Proteins tab on a headset: does Search open the keypad, and does picking a protein light its partners?",
-    "Listen: does the synthetic voice say CDK5, p35, GOLGA2 and BCL2L11 well enough?"
+    "Play Where memes meet in a headset: in chapters 6 and 7, are you standing in the gold commons, its ties running out to the niches round you? Anything too close to your eyes?",
+    "Explore, Memes: search Doge, pick a meme with the ray: do its ties light up?",
+    "Explore, Years: do the hot topics rise and read well?",
+    "Listen: are Doge, Nyan Cat and 4chan said well enough?",
+    "The CDK5 story (from v136): standing inside the map in chapters 1 and 2."
   ],
   "untested": [
-    "Everything of the new story on a real headset: sizes, standing inside, the veil, pointing at points and balls.",
-    "The new story in a shared room on real devices (checked with pages in a headless browser).",
-    "How its narration and sound effects sound (rendered, not heard)."
+    "Both new stories on a real headset: sizes, standing inside, the near-eye fade, pointing at points.",
+    "Both new stories in a shared room on real devices.",
+    "How their narrations and sound effects sound (rendered, not heard)."
   ]
 }

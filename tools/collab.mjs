@@ -268,6 +268,11 @@ const STORIES = {
     change: "openScene('ntrk2'); selectProt(CDATA.find('NTRK2')); setPath(0)",
     back: "pickTab('diseases'); openScene('disease'); selectProt(-1); setPath(-1); selectTerm(0)",
   },
+  memes: {
+    // (the network with a community lit and a meme picked; then the years with the 2019 snapshot)
+    change: "pickTab('communities'); selectCom(3); selectMeme(MDATA.find('Doge'))",
+    back: "pickTab('years'); selectCom(-1); selectMeme(-1); setWhich(1)",
+  },
   robots: {
     change: "setCtl('robots', 'rule', 'chain'); setCtl('robots', 'robots', '12')", back: "setCtl('robots', 'trails', 'on'); setCtl('robots', 'links', 'on')",
     effect: { quiet: '0', idle: "(window.__c0 = GL.sets.robots.anchors.crumbs().join(), true)", send: 'spillCrumbs()', seen: "GL.sets.robots.anchors.crumbs().join() !== window.__c0" },

@@ -2,9 +2,9 @@
  "generated": "tools/design/props.json: the catalogue of 3D sets (props); code is authoritative, see docs/props.md",
  "coordinates": "camera views are [az, el, dist, tx, ty, tz]: degrees, degrees, local units; camera = target + dist * (cos el sin az, sin el, cos el cos az); vertical field of view 32 degrees",
  "counts": {
-  "sets": 47,
-  "params": 489,
-  "views": 317
+  "sets": 49,
+  "params": 506,
+  "views": 326
  },
  "sets": [
   {
@@ -19361,6 +19361,405 @@
     "api"
    ],
    "notes": "Every place, colour and link is the authors' (the CDK5_analytics VR project, through CDATA); the tags' numbers come from CDATA."
+  },
+  {
+   "id": "memes/cloud",
+   "key": "cloud",
+   "story": "memes",
+   "reusedBy": [],
+   "reuses": [
+    "cdk5/net (adapted, not reused)"
+   ],
+   "file": "tools/memes/sets/cloud.js",
+   "manifest": "tools/memes/sets/cloud.md",
+   "shows": "29,610 internet memes as glowing points flowing from the authors' archive layout (by shared tags) into their tag network of 17,243 memes: ties in blue, 27 communities in colour, a shell of tight niches outside and a gold commons of classic memes inside whose amber ties run out to every niche.",
+   "frame": "Centred on the origin; each layout with 90 % of its memes within radius 1.2; the commons within about 0.33.",
+   "size": "radius ~1.2",
+   "sharesFrameWith": [],
+   "params": [
+    {
+     "name": "cloud_a",
+     "range": "0..1",
+     "default": 1,
+     "eased": true,
+     "meaning": "the set's fade, 0 hidden to 1 shown (applied by the engine through setAlpha; a set never applies it itself)"
+    },
+    {
+     "name": "cloud_layout",
+     "range": "0..1",
+     "default": 0,
+     "eased": true,
+     "meaning": "0 the archive (29,610), 1 the tag network (17,243; the rest drift out and fade)"
+    },
+    {
+     "name": "cloud_grow",
+     "range": "0..1",
+     "default": 1,
+     "eased": true,
+     "meaning": "the cloud grows from the centre (each meme by its radius and a seeded share); ties after it"
+    },
+    {
+     "name": "cloud_alone",
+     "range": "0..1",
+     "default": 0,
+     "eased": true,
+     "meaning": "the archive's lonely memes dim to faint grey (MLOOK.C.alone; see Deviations); tag \"11,906 with no link\""
+    },
+    {
+     "name": "cloud_links",
+     "range": "0..1",
+     "default": 0,
+     "eased": true,
+     "meaning": "the strongest three ties of each meme, blue"
+    },
+    {
+     "name": "cloud_comCol",
+     "range": "0..1",
+     "default": 0,
+     "eased": true,
+     "meaning": "memes and ties take their community's colour; tags at the named communities' centres (\"Music · rap, song\"), at most six"
+    },
+    {
+     "name": "cloud_shell",
+     "range": "0..1",
+     "default": 0,
+     "eased": true,
+     "meaning": "the outer 25 % (bands 3, 4) brighten cool (C.shell), the rest dims to 22 %; tag \"The niches · 2 % ...\" on a shell meme in front"
+    },
+    {
+     "name": "cloud_commons",
+     "range": "0..1",
+     "default": 0,
+     "eased": true,
+     "meaning": "the inner 10 % (band 0) glows gold, the rest dims to 20 %; a soft gold glow at its middle seen from outside; tag \"The commons · a third ...\""
+    },
+    {
+     "name": "cloud_cross",
+     "range": "0..1",
+     "default": 0,
+     "eased": true,
+     "meaning": "the commons' 6,520 crossing ties, amber, running out"
+    },
+    {
+     "name": "cloud_pulse",
+     "range": "0..1",
+     "default": 0,
+     "eased": true,
+     "meaning": "(extra) the light running out along the crossing ties grows stronger"
+    },
+    {
+     "name": "cloud_core",
+     "range": "0..1",
+     "default": 0,
+     "eased": true,
+     "meaning": "the classics (hyp.core, 24) glow; their names, a few at a time, facing you"
+    },
+    {
+     "name": "cloud_pick",
+     "range": "step",
+     "default": -1,
+     "eased": false,
+     "meaning": "step: -1 or a net index: ring, halo, its ties in cyan, its ties' memes lit, the rest steps back; tags \"Doge · bitcoin, stare\" and \"General memes, the commons · 52 % of its ties leave\" (community, band, foreign)"
+    },
+    {
+     "name": "cloud_com",
+     "range": "step",
+     "default": -1,
+     "eased": false,
+     "meaning": "step: -1 or a community: its memes and ties lit in its colour, its other ties drawn, the rest dims; a soft glow at its centre; tag \"Politics · 1,485 memes\" (the community tags hide meanwhile)"
+    }
+   ],
+   "views": [
+    {
+     "name": "default",
+     "view": [
+      25,
+      14,
+      4.6,
+      0,
+      0,
+      0
+     ],
+     "frames": "default"
+    },
+    {
+     "name": "side",
+     "view": [
+      115,
+      8,
+      4.6,
+      0,
+      0,
+      0
+     ],
+     "frames": "side"
+    },
+    {
+     "name": "close",
+     "view": [
+      31,
+      12,
+      1.15,
+      0.39,
+      0.23,
+      0.835
+     ],
+     "frames": "close"
+    },
+    {
+     "name": "inside",
+     "view": [
+      205,
+      -14,
+      0.35,
+      -0.144,
+      -0.085,
+      -0.308
+     ],
+     "frames": "inside"
+    },
+    {
+     "name": "above",
+     "view": [
+      25,
+      72,
+      5,
+      0,
+      0,
+      0
+     ],
+     "frames": "above"
+    },
+    {
+     "name": "commons",
+     "view": [
+      25,
+      14,
+      1.6,
+      0.006,
+      0.044,
+      -0.03
+     ],
+     "frames": "commons"
+    }
+   ],
+   "controls": [
+    {
+     "key": "layout",
+     "label": "Layout",
+     "options": [
+      {
+       "value": "network",
+       "label": "Tag network"
+      },
+      {
+       "value": "archive",
+       "label": "Archive"
+      }
+     ]
+    },
+    {
+     "key": "links",
+     "label": "Ties",
+     "options": [
+      {
+       "value": "on",
+       "label": "On"
+      },
+      {
+       "value": "off",
+       "label": "Off"
+      }
+     ]
+    },
+    {
+     "key": "colour",
+     "label": "Colour",
+     "options": [
+      {
+       "value": "groups",
+       "label": "Groups"
+      },
+      {
+       "value": "plain",
+       "label": "Plain"
+      }
+     ]
+    },
+    {
+     "key": "look",
+     "label": "Show",
+     "options": [
+      {
+       "value": "all",
+       "label": "Everything"
+      },
+      {
+       "value": "shell",
+       "label": "The niches"
+      },
+      {
+       "value": "commons",
+       "label": "The commons"
+      }
+     ]
+    }
+   ],
+   "anchors": [
+    "centre",
+    "top",
+    "commons",
+    "shell",
+    "commonsTag",
+    "alone",
+    "pick",
+    "pickTag",
+    "comLit",
+    "com",
+    "meme",
+    "com0",
+    "com1",
+    "com2",
+    "com3",
+    "com4",
+    "com5",
+    "com6",
+    "com7",
+    "com8",
+    "com9",
+    "com10",
+    "com11",
+    "com12",
+    "com13",
+    "com14",
+    "com15",
+    "com16",
+    "com17",
+    "com18",
+    "core0",
+    "core1",
+    "core2",
+    "core3",
+    "core4",
+    "core5",
+    "core6",
+    "core7",
+    "core8",
+    "core9",
+    "core10",
+    "core11",
+    "core12",
+    "core13",
+    "core14",
+    "core15",
+    "core16",
+    "core17",
+    "core18",
+    "core19",
+    "core20",
+    "core21",
+    "core22",
+    "core23"
+   ],
+   "otherExports": [
+    "api"
+   ],
+   "notes": "Every place and tie is the authors' (the Memes_Data repository, through MDATA); flagged memes are never named."
+  },
+  {
+   "id": "memes/year",
+   "key": "year",
+   "story": "memes",
+   "reusedBy": [],
+   "reuses": [],
+   "file": "tools/memes/sets/year.js",
+   "manifest": "tools/memes/sets/year.md",
+   "shows": "One year of memes at a time (2019, or 2020 twice) as a glowing disc of the authors' 2D snapshot with faint ties, the year's hot topic rising out of it in magenta, each hot word at its own height.",
+   "frame": "A disc of radius about 1 on y = 0, the hot topics rising to about 0.8.",
+   "size": "disc radius ~1",
+   "sharesFrameWith": [],
+   "params": [
+    {
+     "name": "year_a",
+     "range": "0..1",
+     "default": 1,
+     "eased": true,
+     "meaning": "the set's fade, 0 hidden to 1 shown (applied by the engine through setAlpha; a set never applies it itself)"
+    },
+    {
+     "name": "year_which",
+     "range": "step",
+     "default": 0,
+     "eased": false,
+     "meaning": "the snapshot on show: 0 politics, 1 screens, 2 social media (only that one is drawn)"
+    },
+    {
+     "name": "year_fade",
+     "range": "0..1",
+     "default": 1,
+     "eased": true,
+     "meaning": "the snapshot on show fades (the engine dips it to 0 to change snapshots, and jumps year_which there)"
+    },
+    {
+     "name": "year_rise",
+     "range": "0..1",
+     "default": 1,
+     "eased": true,
+     "meaning": "the hot topics rise (each meme on a seeded delay of up to 0.3; a function of the param alone); the rest of the disc dims a little; links between two hot memes magenta, links up to one fainter"
+    }
+   ],
+   "views": [
+    {
+     "name": "default",
+     "view": [
+      0,
+      30,
+      4,
+      0,
+      0.3,
+      0
+     ],
+     "frames": "default"
+    },
+    {
+     "name": "low",
+     "view": [
+      24,
+      9,
+      3.8,
+      0,
+      0.38,
+      0
+     ],
+     "frames": "low"
+    },
+    {
+     "name": "above",
+     "view": [
+      0,
+      78,
+      4.1,
+      0,
+      0,
+      0
+     ],
+     "frames": "above"
+    }
+   ],
+   "controls": [],
+   "anchors": [
+    "centre",
+    "top",
+    "hot0",
+    "hot1",
+    "hot2",
+    "hot3",
+    "hot4"
+   ],
+   "otherExports": [
+    "api"
+   ],
+   "notes": "Every place and tie is the authors' (the Memes_Data repository, through MDATA); flagged memes are never named."
   },
   {
    "id": "pass/fish",

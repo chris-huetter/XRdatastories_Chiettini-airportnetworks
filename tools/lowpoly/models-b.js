@@ -1,4 +1,4 @@
-// Low-poly miniatures of the stories' sets, batch b: the aging ovary, qubits, mutation, tissue topology, soil, CDK5, pass, flock
+// Low-poly miniatures of the stories' sets, batch b: the aging ovary, qubits, mutation, tissue topology, soil, CDK5, memes, pass, flock
 // and robot gang stories' sets and the three hand-written stories' scenes (airports, proteins, spatial). They stand on the
 // design room's table, and a story's main one (its entry's icon in stories/list.js) is its station icon above the ring;
 // the design room's own table (design.table) is only that design room's icon, not a prop on the table, and so are the
@@ -629,6 +629,31 @@ var LOWPOLY_MODELS = LOWPOLY_MODELS || {};
     };
     ring(7, 0.22, 0.2, '#00fff0', 0.4);
     ring(6, -0.24, 0.19, '#ffa500', 1.3);
+  });
+
+  // ================================================================== where memes meet (the memes story)
+  // the authors' colours: memes pale cyan, links blue, communities an hsv palette; ours: the commons gold
+  const HSV = k => { const h = ((k * 7) % 19) / 19, f = n => { const x = (n + h * 6) % 6; return 1 - 0.62 * Math.max(0, Math.min(x, 4 - x, 1)); }; return [f(5), f(3), f(1)]; };
+  def('memes.cloud', 'Cloud of 17,243 memes', 'The tag network of memes as a cloud: niches in their communities\' colours reaching out on arms round the outside, tied in blue, and at its heart a warm gold commons of classic memes whose amber ties run out to every niche.', 1122, (M, g, r) => {
+    plinth(M, 0.3, 0.05);
+    const C = [0, 0.55, 0];
+    M.add('veil', g.ball(0.4, 1), '#2a4a6a', C);
+    const arms = [];
+    for (let a = 0; a < 7; a++) {   // niches: arms of memes reaching out, each a community's colour
+      const u = 2 * r() - 1, t = r() * 2 * PI, s = Math.sqrt(1 - u * u), d = [s * Math.cos(t), u * 0.8, s * Math.sin(t)], col = HSV(a * 2), pts = [];
+      for (let i = 0; i < 9; i++) { const f = 0.18 + i * 0.03, p = add3(C, [d[0] * f + (r() - 0.5) * 0.05, d[1] * f + (r() - 0.5) * 0.05, d[2] * f + (r() - 0.5) * 0.05]); pts.push(p); M.add('glow', g.oct(0.016), col, p); }
+      for (let i = 1; i < pts.length; i++) M.add('glow', g.rod(pts[i - 1], pts[i], 0.004, 3), '#00abff');
+      arms.push(pts[pts.length - 1]);
+    }
+    const core = [];
+    for (let i = 0; i < 14; i++) { const p = add3(C, [(r() - 0.5) * 0.16, (r() - 0.5) * 0.16, (r() - 0.5) * 0.16]); core.push(p); M.add('glow', g.oct(0.022), '#ffd36b', p); }
+    arms.forEach((p, i) => M.add('glow', g.rod(core[i], p, 0.005, 3), '#ffb43b'));   // the commons' ties to every niche
+  });
+  def('memes.year', 'A year in memes', 'A glowing disc of one year\'s memes tied faintly in blue, its hot topic rising out of it in magenta: a few memes lifted on light, the year\'s talking point standing above the rest.', 504, (M, g, r) => {
+    plinth(M, 0.34, 0.05);
+    M.add('flat', g.disc(0.32, 24), '#0e2236', [0, 0.06, 0], [-PI / 2, 0, 0]);
+    for (let i = 0; i < 40; i++) { const a = r() * 2 * PI, d = 0.3 * Math.sqrt(r()); M.add('glow', g.oct(0.011), '#ffb347', [d * Math.cos(a), 0.075, d * Math.sin(a)]); }
+    for (let i = 0; i < 8; i++) { const a = r() * 2 * PI, d = 0.2 * Math.sqrt(r()), h = 0.3 + r() * 0.45, base = [d * Math.cos(a), 0.075, d * Math.sin(a)], top = [base[0], h, base[2]]; M.add('glow', g.rod(base, top, 0.004, 3), '#ff5ad9'); M.add('glow', g.oct(0.02), '#ff5ad9', top); }
   });
 
   // ================================================================== pass it on

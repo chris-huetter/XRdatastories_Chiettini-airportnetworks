@@ -63,6 +63,10 @@ The CDK5 story, The switch that sticks (#cdk5), has narration-cdk5.mp3. Its
 chapters start at 0:00, 1:01, 2:09, 3:10, 4:17, 5:18, 6:24 and 7:36, ending
 at 8:27; its tables are in tools/cdk5/engine/e3_story.js (then rebuild).
 
+The memes story, Where memes meet (#memes), has narration-memes.mp3. Its
+chapters start at 0:00, 0:56, 2:04, 3:22, 4:41, 6:00 and 7:30, ending at
+8:38; its tables are in tools/memes/engine/e3_story.js (then rebuild).
+
 The network-medicine story (#proteins) has narration-proteins.mp3. Its
 chapters start at 0:00, 0:21, 0:50, 1:21, 1:49, 2:25, 3:20, 3:54, 4:34 and
 5:25, ending at 5:48; its tables are in stories/proteins.js.
@@ -189,7 +193,7 @@ synthetic one. A synthetic voice for a new story: see tools/voice/README.md
    stories, rebuild with node tools/<story>/build.mjs. A recorded story's
    table follows the recording: tools/pace.mjs leaves it alone from then on.
 4. Bump VERSION in sw.js. A device keeps a narration once a story has played
-   it there; sw.js lists the narration files in AUDIO (all seventeen names are
+   it there; sw.js lists the narration files in AUDIO (all eighteen names are
    there already, and the pass story's German one) so that a new release
    checks the ones a device holds and fetches those that changed.
 5. Serve the folder and run node tools/smoke.mjs and node tools/audio.mjs

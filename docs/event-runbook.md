@@ -121,7 +121,7 @@ local network found each other this way, and then shared a peer-to-peer room; he
   corners: spots on a table would put the room's floor on the table).
   Every headset calibrates on them as it starts and checks on them; the first headset's calibration makes them the
   room's. Label them A and B: a headset that touches them the other way round stands the room the other way round.
-- [ ] Floor for **Arrange all**: seventeen stations in two rows, nine and eight behind them, about 19 m by 4 m starting 1.2 m in front of you.
+- [ ] Floor for **Arrange all**: eighteen stations in two rows, nine and nine behind them, about 19 m by 4 m starting 1.2 m in front of you.
   Less room: place a few with **Add here** (headset) or **Add a station** (page).
 
 ## 2. Setting up

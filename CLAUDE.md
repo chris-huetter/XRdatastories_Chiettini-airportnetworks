@@ -10,7 +10,7 @@
 - The story files are large (`stories/airports.js` is ~640 KB because of its
   embedded data). Search with Grep and read line ranges; never read them whole.
 - Prefer small, exact edits. When a change touches the headset code, apply it
-  to all seventeen stories: their XR, panel and landing-screen code is meant to
+  to all eighteen stories: their XR, panel and landing-screen code is meant to
   stay identical apart from story-specific panes.
 - Verify visual changes by serving the folder and taking headless Chromium
   screenshots (hashes such as `#spatial&t=60` jump straight to a moment).
@@ -68,7 +68,7 @@
   background, and `vacuum` is the only continuous sound (the owner, 30 October
   2026: the other backgrounds and the machines' hum went; never bring them back
   unasked). Stories ask for them through the same lines in all
-  seventeen, the design room and the studio (the sound effects block after the slideshow block,
+  eighteen, the design room and the studio (the sound effects block after the slideshow block,
   `sfxCue`/`sfxHold` beside the keys, `sfxAct` for explore actions, `sfxLive` in
   the live simulations; the flock and the airports are the references): keep them
   identical, and never put a sound in `collab.state()`. After changing a sound,
@@ -98,13 +98,13 @@
   for every story: never put them in a story's `state()`. Stories read labels,
   cards and free moving every frame through the shared lines (`xrSettings`:
   `XR.lm`, `XR.cm`; `placeLabelXR` follows the labels only, `panelDepth` and the
-  story panels' visibility the cards only; `xrFace`), the same in all seventeen and
+  story panels' visibility the cards only; `xrFace`), the same in all eighteen and
   the design room; the shell draws the subtitles from each
-  story's caption hook (`caption: xrCaption`, the same lines in all seventeen).
+  story's caption hook (`caption: xrCaption`, the same lines in all eighteen).
   Moving with the sticks in VR (`HOST.xr.walk()`, v125; in a shared room only for a headset elsewhere, v128) is the shell's too and
   each headset's own: the shell moves three.js's reference space, so stories
   never move `GL.rig` for it; their own stick use waits on `xrWalking()` (the same
-  line in all seventeen, the design room and the studio); the studio switches its
+  line in all eighteen, the design room and the studio); the studio switches its
   own sticks with it and moves you itself while it is on (`sticks` in its
   returned object; "The studio's two stick modes" in `AGENTS.md`). No story reads A or X
   (`buttons[4]`): play and pause are on the panels and the menu's Story tab.
@@ -112,7 +112,7 @@
   and how the subtitles read and follow the head can only be checked on a
   headset: report them as untested.
 - Shared rooms (`shared.js`, `relay/`, see "Shared rooms" in `AGENTS.md`): keep
-  the shared hooks in all seventeen stories, the same lines in each (the `collab`
+  the shared hooks in all eighteen stories, the same lines in each (the `collab`
   object, the ray and press lines, the grip line, the session through
   `HOST.xr.request(mode)` (its features from `HOST.xr.features(mode)`: AR asks for `'shared'` and depth sensing, VR for less), the Recenter lines (`xrRecenterAsk` and `recenter` in the returned object), the `HOST.collab.mine()` lines in `xrFreshStart` and
   `xrLandingClose`, and the walk-in lines: `xrRoomOnly` and `xrAway` (no Stories screen in a room; away from its station
@@ -137,7 +137,7 @@
   `node tools/nmd/data/gen_data.mjs <folder>`). Never show patient or variant data in it.
   `stories/flock.js` likewise from `tools/flock/` (`node tools/flock/build.mjs`),
   and `stories/robots.js` from `tools/robots/` (`node tools/robots/build.mjs`).
-  `stories/design.js` (the design room, not one of the seventeen: `STORY_EXTRA`) likewise from `tools/design/`
+  `stories/design.js` (the design room, not one of the eighteen: `STORY_EXTRA`) likewise from `tools/design/`
   (`node tools/design/build.mjs`; its cards from `tools/design/props.json`), its models from `lowpoly.js`, built from
   `tools/lowpoly/` (`node tools/lowpoly/build.mjs`; every miniature under 1,200 triangles, its `tris` exact).
   `stories/studio.js` (the studio, v111, the second page in `STORY_EXTRA`: the owner's own models, trigger cubes and
@@ -202,6 +202,11 @@
   layout, colour and link is the authors', decoded from their VR project's textures: never lay them out again in the app.
   Ours, and said so: the close-ups, the tags, the disease over-representation counts and the process knots (named from
   today's GO, not the authors' matrix); the CDK5 - calpain link is the authors' drawing. British spelling.
+  `stories/memes.js` likewise from `tools/memes/` (`node tools/memes/build.mjs`; checked by `node tools/memes/test-data.mjs`;
+  data from a clone of the Menche lab's public Memes_Data repository via `python3 -I tools/memes/data/gen_data.py <clone>`,
+  not in the repository). No Know Your Meme images, ever; memes flagged by their own tags or a crude name stay unnamed (never add names).
+  Its ending is a hypothesis: keep its caveats (tags, not sharing; a 2D view can still tell centre from edge). British
+  spelling.
   `stories/pass.js` likewise from `tools/pass/` (`node tools/pass/build.mjs`; its sets checked by
   `node tools/pass/test-sets.mjs`). Its globe and cell are cut, unchanged, out of `stories/airports.js` and
   `stories/spatial.js` at build time, so rebuild it after changing either. It is in English and German: every word in

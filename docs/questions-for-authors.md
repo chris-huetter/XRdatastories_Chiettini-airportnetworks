@@ -196,6 +196,18 @@ project and the notebook that made it (`CDK5_BioStory_NEW.ipynb`); everything th
 | C7 | The GO matrix behind the map of processes | `Features_GO_BiolProc_Dataframe_human.pickle`, on the lab's Drive, not in the repository | the map's knots named from a current GO release (14 small knots); the big dense clouds left unnamed, as today's GO finds no single process in them | open: with the authors' matrix the big clouds could be named |
 | C6 | The over-representation counts | not in the repository: computed for the story (`CDK5_DATA.diseases`), within the proteins with a disease | "more than chance would give", with the numbers, "in this map" | open: the authors' preferred background and test |
 
+## Where memes meet (`memes`)
+
+Source: the Menche lab's repository Memes_Data (github.com/menchelab/Memes_Data, Christiane Hütter; knowyourmeme.com,
+2022-2023). Who to ask: Christiane Hütter. Contact person: **TO FILL (owner)**.
+
+| # | Item | Where in the source | What the story shows now | Status |
+| --- | --- | --- | --- | --- |
+| M1 | The "topic subnetworks" | `subgraphs/*/subnetwork_Cmod_*.json`: each holds all memes of one year (2019 or 2020) | shown as one-year snapshots with the hot topic rising | open: is that what they are? |
+| M2 | The eigenvector layout's method | `data/Memes_felix-eigen-3D_nn10_md0.json` | "the authors' eigenvector layout" | open: its exact method |
+| M3 | The closing hypothesis | ours (`tools/memes/data/gen_data.py`) | crossing communities, not views, brings a meme to the commons; caveats said | open: the authors' view, and a later scrape to test it |
+| M4 | Know Your Meme's terms | knowyourmeme.com | names and tags only, no images | open (owner) |
+
 ## Pass it on (`pass`)
 
 The lab's own outreach story, so the questions are for the owner and whoever checks it for the institute, not for

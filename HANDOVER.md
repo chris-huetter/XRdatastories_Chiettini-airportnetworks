@@ -1,6 +1,6 @@
 # Start here: handing over Networks
 
-An installable web app that teaches network science in seventeen narrated 3D stories, each followed by an explore mode,
+An installable web app that teaches network science in eighteen narrated 3D stories, each followed by an explore mode,
 on desktops, phones and VR/AR headsets (built for Meta Quest Browser). Several headsets can share one room. There is
 no build step and no framework: plain HTML and JavaScript with a vendored three.js, deployed by copying the folder to
 any HTTPS host. This page is for the colleagues taking it over: what there is, what state it is in, what is still open,
@@ -19,7 +19,7 @@ and where to read on.
 | set up the PC with the Vive trackers and the Index | [tools/trackers/README.md](tools/trackers/README.md), [tools/trackers/SPEC.md](tools/trackers/SPEC.md), [relay/README.md](relay/README.md) ("The PC's Vive trackers") |
 | release (and write the *What is new* box) | [docs/setup-and-release.md](docs/setup-and-release.md); `whatsnew.json` is rewritten by hand at every release |
 
-## The seventeen stories
+## The eighteen stories
 
 | Story | Key | Source | Narration | Data |
 | --- | --- | --- | --- | --- |
@@ -37,6 +37,7 @@ and where to read on.
 | Tissue topology: The shape of tissue | `topo` | `tools/topo/` (built) | synthetic (Kokoro, `af_heart`) | every number computed by the authors' package topocyte on their GTEx liver cohort (the files kept out of the repository; only the numbers in it); the poster's numbers all reproduced; the genes and proteins of the last chapter are sketches |
 | Soil microbes: Holding on to nitrogen | `soil` | `tools/soil/` (built) | synthetic (Kokoro, `af_heart`) | the field trial's data (16S read counts, their taxonomy, the field metadata; the files kept out of the repository, only the numbers in it); the slides' charts read off (approximate); the soil block, its flows and the field's layout illustrative; the co-occurrence network built for this story |
 | Brain kinase: The switch that sticks | `cdk5` | `tools/cdk5/` (built) | synthetic (Kokoro, `af_heart`) | real: the Menche lab's public CDK5_data repository (its CDK5_analytics VR project, decoded exactly from its textures); the process knots named from a current GO release; the close-ups and the disease counts ours |
+| Internet culture: Where memes meet | `memes` | `tools/memes/` (built) | synthetic (Kokoro, `af_heart`) | real: the Menche lab's public Memes_Data repository (Know Your Meme, 2022-2023; its layouts as they are); the communities and the hypothesis' measures ours; no images; 1,706 flagged memes unnamed |
 | Networks for everyone: Pass it on | `pass` | `tools/pass/` (built; its globe and cell cut out of `stories/airports.js` and `stories/spatial.js` at build time) | synthetic (Kokoro `af_heart`; German: Piper, Thorsten) | the airports' routes and the cell map's proteins as in those stories; the fish and the outbreak are simulations; English and German |
 | Collective motion: Flock | `flock` | `tools/flock/` (built) | synthetic (Kokoro, `af_heart`) | a live simulation |
 | Swarm robotics: Robot gang | `robots` | `tools/robots/` (built) | synthetic (Kokoro, `af_heart`) | a live simulation |
@@ -1929,7 +1930,7 @@ Before handing over (or making anything more public), someone has to decide thes
 - The story files are large (`stories/airports.js` is about 640 KB with its data): search them, never read them whole.
 - Headset behaviour can only be confirmed on a device: say so when reporting a change.
 
-## Adding a seventeenth story
+## Adding another story
 
 The sixteenth story (`soil`) is the most recent example (item 11 above; its integration touched every file the steps
 below name); the fifteenth (`topo`) too: `git show --stat` on its commits shows every file it touched
